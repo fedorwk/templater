@@ -63,5 +63,5 @@ func (repl *MultiReplacer) executeToStream(template string, n int, w io.Writer) 
 }
 
 func (repl *MultiReplacer) withDelimiters() bool {
-	return !(repl.startDelimiter == "" && repl.endDelimiter == "")
+	return repl.startDelimiter != "" || repl.endDelimiter != ""
 }

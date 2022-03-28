@@ -21,13 +21,13 @@ func (t *Templater) AllStrings() []string {
 	return res
 }
 
-// returns string with executed replacement with data at "position" in MultiReplacer
-func (t *Templater) ExecuteToString(position int) string {
-	return t.replacer.executeToString(t.template, position)
+// returns string with executed replacement with data at given index in MultiReplacer
+func (t *Templater) ExecuteToString(i int) string {
+	return t.replacer.executeToString(t.template, i)
 }
 
-// writes text with executed replacement with data at "position" in MultiReplacer
+// writes text with executed replacement with data at given index in MultiReplacer
 // returns bytes written and error if occurred
-func (t *Templater) ExecuteToStream(position int, w io.Writer) (int, error) {
-	return t.replacer.executeToStream(t.template, position, w)
+func (t *Templater) ExecuteToStream(i int, w io.Writer) (int, error) {
+	return t.replacer.executeToStream(t.template, i, w)
 }
