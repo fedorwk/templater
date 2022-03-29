@@ -4,16 +4,16 @@ import "io"
 
 type Templater struct {
 	template string
-	replacer *MultiReplacer
+	replacer *Replacer
 }
 
-func NewTemplater(template string, replacer *MultiReplacer) *Templater {
+func NewTemplater(template string, replacer *Replacer) *Templater {
 	return &Templater{template, replacer}
 }
 
 // AllStrings() returns list of strings with replacements executed
 func (t *Templater) AllStrings() []string {
-	res := make([]string, 0, len(t.replacer.replacements))
+	res := make([]string, 0, len(t.replacer.items))
 
 	for i := 0; i < t.replacer.Len(); i++ {
 		res = append(res, t.replacer.executeToString(t.template, i))
@@ -26,7 +26,7 @@ func (t *Templater) ExecuteToString(i int) string {
 	return t.replacer.executeToString(t.template, i)
 }
 
-// writes text with executed replacement with data at given index in MultiReplacer
+// writes text with executed replacement with item data at given index in MultiReplacer
 // returns bytes written and error if occurred
 func (t *Templater) ExecuteToStream(i int, w io.Writer) (int, error) {
 	return t.replacer.executeToStream(t.template, i, w)

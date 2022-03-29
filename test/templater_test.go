@@ -22,8 +22,8 @@ var (
 func TestBasicTemplateReplacer(t *testing.T) {
 	template := BasicTemplate
 	items := BasicItems
-	multireplacer := templater.NewMultiReplacer(items, "{", "}")
-	templater := templater.NewTemplater(template, multireplacer)
+	replacer := templater.NewReplacer(items, "{", "}")
+	templater := templater.NewTemplater(template, replacer)
 	result := templater.AllStrings() // Get all strings with replacement by item data
 	for i := range result {
 		if result[i] != TextExpected[i] {
@@ -35,8 +35,8 @@ func TestBasicTemplateReplacer(t *testing.T) {
 func TestOneSidedTemplateReplacer(t *testing.T) {
 	template := OneSidedTemplate
 	items := BasicItems
-	multireplacer := templater.NewMultiReplacer(items, "$", "")
-	templater := templater.NewTemplater(template, multireplacer)
+	replacer := templater.NewReplacer(items, "$", "")
+	templater := templater.NewTemplater(template, replacer)
 	// Get strigns one by one with replacement by item data
 	for i := range items {
 		if result := templater.ExecuteToString(i); result != TextExpected[i] {
