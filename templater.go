@@ -13,7 +13,7 @@ func NewTemplater(template string, replacer *Replacer) *Templater {
 
 // AllStrings() returns list of strings with replacements executed
 func (t *Templater) AllStrings() []string {
-	res := make([]string, 0, len(t.replacer.items))
+	res := make([]string, 0, t.replacer.Len())
 
 	for i := 0; i < t.replacer.Len(); i++ {
 		res = append(res, t.replacer.executeToString(t.template, i))

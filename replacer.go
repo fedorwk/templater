@@ -14,11 +14,11 @@ type Replacer struct {
 	endDelimiter   string
 }
 
-func NewReplacer(items []map[string]string, stratDelim, endDelim string) *Replacer {
+func NewReplacer(items []map[string]string, stratDelimiter, endDelimiter string) *Replacer {
 	return &Replacer{
 		items:          items,
-		startDelimiter: stratDelim,
-		endDelimiter:   endDelim,
+		startDelimiter: stratDelimiter,
+		endDelimiter:   endDelimiter,
 	}
 }
 
