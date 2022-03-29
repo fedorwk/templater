@@ -5,7 +5,7 @@ import (
 	"io"
 	"strings"
 
-	"github.com/fedorwk/templater/util"
+	"github.com/fedorwk/templater/basic"
 )
 
 type MultiReplacer struct {
@@ -31,7 +31,7 @@ func (repl *MultiReplacer) replacementSliceAt(n int) []string {
 		return nil
 	}
 	if !repl.withDelimiters() {
-		return util.UnwrapMap(repl.replacements[n])
+		return basic.UnwrapMap(repl.replacements[n])
 	}
 	res := make([]string, 0, len(repl.replacements[n])*2)
 	for key, val := range repl.replacements[n] {
