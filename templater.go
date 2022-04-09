@@ -7,11 +7,11 @@ type Templater struct {
 	Replacer *Replacer
 }
 
-func NewTemplater(Template string, items []map[string]string,
+func NewTemplater(template string, items []map[string]string,
 	startDelimiter string, endDelimiter string) *Templater {
 
 	Replacer := NewReplacer(items, startDelimiter, endDelimiter)
-	return &Templater{Template, Replacer}
+	return &Templater{template, Replacer}
 }
 
 // AllStrings() returns list of strings with replacements executed
